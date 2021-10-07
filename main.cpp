@@ -102,8 +102,8 @@ void crossover() {
             i2 = random(0, POPULATION - 1);
         } while (i1 == i2);
 
+        int crossoverPosition = random(0, 12);
         for (int j = 0; j < 13; j++) {
-            int crossoverPosition = random(0, 12);
             if (j < crossoverPosition) {
                 individual[i].gene[j] = pool[i1].gene[j];
                 individual[i + 1].gene[j] = pool[i2].gene[j];
