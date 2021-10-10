@@ -32,8 +32,8 @@
 * ROUND: number of round
 * GENERATION: number of generation
 * POPULATION: number of population
-* MAX_POSITION: The maximum in the domain
-* MIN_POSITION: The minimum in the domain
+* MAX_POSITION: the maximum in the domain
+* MIN_POSITION: the minimum in the domain
 * CROSSOVER_RATE: probability of crossover
 * MUTATION_RATE: probability of mutation
 * MUTATE_POINT: number of the mutate point
@@ -69,7 +69,7 @@ long double fitness;
 
 ### FlowChart
 
-![Flowchart](./img/Flowchart.png)
+<img src="./img/Flowchart.png" alt="Cover" width="50%"/>
 
 #### Initialization
 
@@ -91,10 +91,10 @@ for (int i = 0; i < 13; i++) {
     }
 }
 
-if (weight > MAX_POSITION) {
-    weight = MAX_POSITION;
+if (value > MAX_POSITION) {
+    value = MAX_POSITION;
 } else if (value < MIN_POSITION) {
-    weight = MIN_POSITION;
+    value = MIN_POSITION;
 }
 
 fitness = (long double) abs(value);
@@ -111,12 +111,12 @@ step 2) Repeat step 1 until the number of mating pools equals the population.
 Pick two individuals randomly from the mating pool, and then randomly generate a crossover point (the red line) ∈ [1, 99].
 Starting from the crossover point (the red line), cross the two gene sequences. As shown below:
 
-![Single-Point Crossover](./img/SPCrossover.png)
+<img src="./img/SPCrossover.png" alt="Cover" width="50%"/>
 
 #### Mutation
 
 * Single-Point Mutation: Every individual has a chance of mutation, but only a random bit will mutate  
-![Single-Point Crossover](./img/SPMutation.png)
+<img src="./img/SPMutation.png" alt="Cover" width="50%"/>
 
 * Multiple-Point Mutation: Every individual has a chance of mutation, and every bit has a chance of mutation  
-![Single-Point Crossover](./img/MPMutation.png)
+<img src="./img/MPMutation.png" alt="Cover" width="50%"/>
