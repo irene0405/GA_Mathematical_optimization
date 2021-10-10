@@ -32,8 +32,8 @@
 * ROUND: number of round
 * GENERATION: number of generation
 * POPULATION: number of population
-* MAX_POSITION: The maximum in the domain
-* MIN_POSITION: The minimum in the domain
+* MAX_POSITION: the maximum in the domain
+* MIN_POSITION: the minimum in the domain
 * CROSSOVER_RATE: probability of crossover
 * MUTATION_RATE: probability of mutation
 * MUTATE_POINT: number of the mutate point
