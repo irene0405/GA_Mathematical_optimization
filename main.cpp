@@ -17,7 +17,7 @@
 using namespace std;
 
 typedef struct Individuals {
-    int gene[13];
+    int gene[14];
     long double value;
     long double fitness;
 } Individuals;
@@ -39,12 +39,12 @@ void initialize() {
         individual[i].fitness = INT_MAX;
         pool[i].value = 0;
         pool[i].fitness = INT_MAX;
-        for (int j = 0; j < 13; j++) {
+        for (int j = 0; j < 14; j++) {
             individual[i].gene[j] = random(0, 1);
             pool[i].gene[j] = 0;
         }
     }
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < 14; i++) {
         best.gene[i] = 0;
     }
     best.value = 0;
@@ -55,10 +55,13 @@ void calcFitness() {
     for (int i = 0; i < POPULATION; i++) {
         individual[i].value = 0.0;
         individual[i].fitness = INT_MAX;
-        for (int j = 0; j < 13; j++) {
+        for (int j = 1; j < 14; j++) {
             if (individual[i].gene[j] == 1) {
                 individual[i].value += (long double) (pow(2, j - 6));
             }
+        }
+        if (individual[i].gene[0] == 1) {
+            individual[i].value *= (-1);
         }
 
         if (individual[i].value > MAX_POSITION) {
@@ -102,8 +105,8 @@ void crossover() {
             i2 = random(0, POPULATION - 1);
         } while (i1 == i2);
 
-        int crossoverPosition = random(0, 12);
-        for (int j = 0; j < 13; j++) {
+        int crossoverPosition = random(0, 13);
+        for (int j = 0; j < 14; j++) {
             if (j < crossoverPosition) {
                 individual[i].gene[j] = pool[i1].gene[j];
                 individual[i + 1].gene[j] = pool[i2].gene[j];
@@ -122,7 +125,7 @@ void mutate() {
             continue;
         }
         for (int j = 0; j < MUTATE_POINT; j++) {
-            position = random(0, 12);
+            position = random(0, 13);
             individual[i].gene[position] = 1 - individual[i].gene[position];
         }
     }
