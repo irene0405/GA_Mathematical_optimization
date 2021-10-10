@@ -91,10 +91,10 @@ for (int i = 0; i < 13; i++) {
     }
 }
 
-if (weight > MAX_POSITION) {
-    weight = MAX_POSITION;
+if (value > MAX_POSITION) {
+    value = MAX_POSITION;
 } else if (value < MIN_POSITION) {
-    weight = MIN_POSITION;
+    value = MIN_POSITION;
 }
 
 fitness = (long double) abs(value);
