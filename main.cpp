@@ -18,7 +18,7 @@ using namespace std;
 
 typedef struct Individuals {
     int gene[13];
-    long double weight;
+    long double value;
     long double fitness;
 } Individuals;
 
@@ -35,9 +35,9 @@ int random(int start, int end) {
 
 void initialize() {
     for (int i = 0; i < POPULATION; i++) {
-        individual[i].weight = 0;
+        individual[i].value = 0;
         individual[i].fitness = INT_MAX;
-        pool[i].weight = 0;
+        pool[i].value = 0;
         pool[i].fitness = INT_MAX;
         for (int j = 0; j < 13; j++) {
             individual[i].gene[j] = random(0, 1);
@@ -47,27 +47,27 @@ void initialize() {
     for (int i = 0; i < 13; i++) {
         best.gene[i] = 0;
     }
-    best.weight = 0;
+    best.value = 0;
     best.fitness = INT_MAX;
 }
 
 void calcFitness() {
     for (int i = 0; i < POPULATION; i++) {
-        individual[i].weight = 0.0;
+        individual[i].value = 0.0;
         individual[i].fitness = INT_MAX;
         for (int j = 0; j < 13; j++) {
             if (individual[i].gene[j] == 1) {
-                individual[i].weight += (long double) (pow(2, j - 6));
+                individual[i].value += (long double) (pow(2, j - 6));
             }
         }
 
-        if (individual[i].weight > MAX_POSITION) {
-            individual[i].weight = MAX_POSITION;
-        } else if (individual[i].weight < MIN_POSITION) {
-            individual[i].weight = MIN_POSITION;
+        if (individual[i].value > MAX_POSITION) {
+            individual[i].value = MAX_POSITION;
+        } else if (individual[i].value < MIN_POSITION) {
+            individual[i].value = MIN_POSITION;
         }
 
-        individual[i].fitness = (long double) abs(individual[i].weight);
+        individual[i].fitness = (long double) abs(individual[i].value);
 
         if (individual[i].fitness < best.fitness) {
             memcpy(&best, &individual[i], sizeof(best));
